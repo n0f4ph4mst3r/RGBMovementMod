@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>6</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{18673A1A-2802-4923-9C6E-8F4388803F23}</ProjectGuid>
@@ -13,6 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>6</LangVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -23,6 +25,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>6</LangVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
@@ -47,8 +50,20 @@
   <ItemGroup>
     <Compile Include="Buffer.cs" />
     <Compile Include="EnhancedImage.cs" />
-    <Compile Include="ImageContainer.cs" />
+    <Compile Include="EnhancedImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnhancedImageForm.Designer.cs">
+      <DependentUpon>EnhancedImageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageWrapper.cs" />
+    <Compile Include="OverleyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverleyForm.Designer.cs">
+      <DependentUpon>OverleyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverleyWrapper.cs" />
     <Compile Include="PerceptionCoffs.cs" />
     <Compile Include="ScretchForm.cs">
       <SubType>Form</SubType>
@@ -57,12 +72,6 @@
       <DependentUpon>ScretchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScretchWrapper.cs" />
-    <Compile Include="SourceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SourceForm.Designer.cs">
-      <DependentUpon>SourceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,15 +80,34 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageForm.Designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SourceWrapper.cs" />
-    <EmbeddedResource Include="ScretchForm.resx">
-      <DependentUpon>ScretchForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SourceForm.resx">
-      <DependentUpon>SourceForm.cs</DependentUpon>
+    <Compile Include="TeleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeleForm.Designer.cs">
+      <DependentUpon>TeleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeleWrapper.cs" />
+    <EmbeddedResource Include="EnhancedImageForm.resx">
+      <DependentUpon>EnhancedImageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverleyForm.resx">
+      <DependentUpon>OverleyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +118,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ScretchForm.resx">
+      <DependentUpon>ScretchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeleForm.resx">
+      <DependentUpon>TeleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
