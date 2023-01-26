@@ -1,7 +1,7 @@
 ﻿
 namespace OverleyEnhanced
 {
-    partial class ScretchForm
+    partial class OverleyForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,46 +29,46 @@ namespace OverleyEnhanced
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxQ = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxK = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.textBoxQ);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.SetChildIndex(this.label6, 0);
-            this.panel3.Controls.SetChildIndex(this.textBoxQ, 0);
+            this.panel3.Controls.Add(this.textBoxK);
+            this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.SetChildIndex(this.buttonRun, 0);
             this.panel3.Controls.SetChildIndex(this.buttonSettings, 0);
+            this.panel3.Controls.SetChildIndex(this.label4, 0);
+            this.panel3.Controls.SetChildIndex(this.textBoxK, 0);
             // 
-            // textBoxQ
+            // label4
             // 
-            this.textBoxQ.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxQ.Location = new System.Drawing.Point(181, 29);
-            this.textBoxQ.Name = "textBoxQ";
-            this.textBoxQ.Size = new System.Drawing.Size(85, 20);
-            this.textBoxQ.TabIndex = 13;
-            this.textBoxQ.Text = "0";
-            this.textBoxQ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxQ_KeyPress);
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(160, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "k";
             // 
-            // label6
+            // textBoxK
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(160, 32);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Q";
+            this.textBoxK.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxK.Location = new System.Drawing.Point(179, 28);
+            this.textBoxK.Name = "textBoxK";
+            this.textBoxK.Size = new System.Drawing.Size(83, 20);
+            this.textBoxK.TabIndex = 14;
+            this.textBoxK.Text = "1";
+            this.textBoxK.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxK_KeyPress);
             // 
-            // ScretchForm
+            // OverleyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(937, 515);
-            this.Name = "ScretchForm";
-            this.Text = "Частотно-пропорциональное растяжение";
+            this.Name = "OverleyForm";
+            this.Text = "Наложение";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -77,8 +77,7 @@ namespace OverleyEnhanced
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxQ;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxK;
     }
 }

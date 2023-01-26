@@ -12,8 +12,7 @@ namespace OverleyEnhanced
         byte[] m_z; //промежуточная шкала яркости
         double m_avg; //средняя яркость
         double m_dev; //среднеквадратичное отклонение
-        public ScretchWrapper(in SourceWrapper src) : base(src)
-        {
+        public ScretchWrapper(SourceWrapper src) : base(src) {
             Update();
         }
         override public void Update()
@@ -23,10 +22,10 @@ namespace OverleyEnhanced
             m_z = new byte[256];
             double V;
             u[0] = 0;
-            d[0] = 0.5 + m_q * frequencyList[0] * 255;
+            d[0] = 0.5 + m_q * m_source.FrequencyScale[0] * 255;
             for (int i = 1; i < 256; i++)
             {
-                d[i] = 0.5 + m_q * frequencyList[i] * 255;
+                d[i] = 0.5 + m_q * m_source.FrequencyScale[i] * 255;
                 u[i] = u[i - 1] + d[i - 1] + d[i];
             }
             V = 255 / u[255];
@@ -40,17 +39,18 @@ namespace OverleyEnhanced
             m_avg = 0;
             for (int i = 0; i < 256; i++)
             {
-                m_avg += i * frequencyList[i];
+                m_avg += i * m_frequencyList[i];
             }
             //находим среднеквадратичное отклонение
             m_dev = 0;
             for (int i = 0; i < 256; i++)
             {
-                m_dev += Math.Pow(i - m_avg, 2) * frequencyList[i];
+                m_dev += Math.Pow(i - m_avg, 2) * m_frequencyList[i];
             }
+            
             m_dev = Math.Sqrt(m_dev);
         }
-        override protected byte GetBright(in byte bright)
+        override protected byte GetBright(byte bright)
         {
             return m_z[Convert.ToInt32(bright)];
         }
@@ -59,7 +59,6 @@ namespace OverleyEnhanced
             set
             {
                 m_q = value;
-                Update();
             }
             get
             {

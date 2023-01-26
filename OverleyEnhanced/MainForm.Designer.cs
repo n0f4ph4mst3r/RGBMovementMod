@@ -33,10 +33,10 @@ namespace OverleyEnhanced
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.исходноеИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.растяжениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.телевизионныйАлгоритмToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.наложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.srcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scretchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overleyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -70,42 +70,48 @@ namespace OverleyEnhanced
             // окнаToolStripMenuItem
             // 
             this.окнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.исходноеИзображениеToolStripMenuItem,
-            this.растяжениеToolStripMenuItem,
-            this.телевизионныйАлгоритмToolStripMenuItem,
-            this.наложениеToolStripMenuItem});
+            this.srcToolStripMenuItem,
+            this.scretchToolStripMenuItem,
+            this.teleToolStripMenuItem,
+            this.overleyToolStripMenuItem});
             this.окнаToolStripMenuItem.Enabled = false;
             this.окнаToolStripMenuItem.Name = "окнаToolStripMenuItem";
             this.окнаToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.окнаToolStripMenuItem.Text = "Окна";
             // 
-            // исходноеИзображениеToolStripMenuItem
+            // srcToolStripMenuItem
             // 
-            this.исходноеИзображениеToolStripMenuItem.CheckOnClick = true;
-            this.исходноеИзображениеToolStripMenuItem.Name = "исходноеИзображениеToolStripMenuItem";
-            this.исходноеИзображениеToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.исходноеИзображениеToolStripMenuItem.Text = "Исходное изображение";
+            this.srcToolStripMenuItem.Checked = true;
+            this.srcToolStripMenuItem.CheckOnClick = true;
+            this.srcToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.srcToolStripMenuItem.Name = "srcToolStripMenuItem";
+            this.srcToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.srcToolStripMenuItem.Text = "Исходное изображение";
+            this.srcToolStripMenuItem.Click += new System.EventHandler(this.исходноеИзображениеToolStripMenuItem_Click);
             // 
-            // растяжениеToolStripMenuItem
+            // scretchToolStripMenuItem
             // 
-            this.растяжениеToolStripMenuItem.CheckOnClick = true;
-            this.растяжениеToolStripMenuItem.Name = "растяжениеToolStripMenuItem";
-            this.растяжениеToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.растяжениеToolStripMenuItem.Text = "Растяжение";
+            this.scretchToolStripMenuItem.CheckOnClick = true;
+            this.scretchToolStripMenuItem.Name = "scretchToolStripMenuItem";
+            this.scretchToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.scretchToolStripMenuItem.Text = "Растяжение";
+            this.scretchToolStripMenuItem.Click += new System.EventHandler(this.растяжениеToolStripMenuItem_Click);
             // 
-            // телевизионныйАлгоритмToolStripMenuItem
+            // teleToolStripMenuItem
             // 
-            this.телевизионныйАлгоритмToolStripMenuItem.CheckOnClick = true;
-            this.телевизионныйАлгоритмToolStripMenuItem.Name = "телевизионныйАлгоритмToolStripMenuItem";
-            this.телевизионныйАлгоритмToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.телевизионныйАлгоритмToolStripMenuItem.Text = "Телевизионный алгоритм";
+            this.teleToolStripMenuItem.CheckOnClick = true;
+            this.teleToolStripMenuItem.Name = "teleToolStripMenuItem";
+            this.teleToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.teleToolStripMenuItem.Text = "Телевизионный алгоритм";
+            this.teleToolStripMenuItem.Click += new System.EventHandler(this.teleToolStripMenuItem_Click);
             // 
-            // наложениеToolStripMenuItem
+            // overleyToolStripMenuItem
             // 
-            this.наложениеToolStripMenuItem.CheckOnClick = true;
-            this.наложениеToolStripMenuItem.Name = "наложениеToolStripMenuItem";
-            this.наложениеToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.наложениеToolStripMenuItem.Text = "Наложение";
+            this.overleyToolStripMenuItem.CheckOnClick = true;
+            this.overleyToolStripMenuItem.Name = "overleyToolStripMenuItem";
+            this.overleyToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.overleyToolStripMenuItem.Text = "Наложение";
+            this.overleyToolStripMenuItem.Click += new System.EventHandler(this.overleyToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
@@ -122,6 +128,7 @@ namespace OverleyEnhanced
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -136,9 +143,9 @@ namespace OverleyEnhanced
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolStripMenuItem окнаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem исходноеИзображениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem растяжениеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem телевизионныйАлгоритмToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem наложениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem srcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scretchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem teleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overleyToolStripMenuItem;
     }
 }

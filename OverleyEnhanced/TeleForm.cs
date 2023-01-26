@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace OverleyEnhanced
 {
-    public partial class ScretchForm : OverleyEnhanced.EnhancedImageForm
+    public partial class TeleForm : OverleyEnhanced.EnhancedImageForm
     {
-        public ScretchForm()
+        public TeleForm()
         {
             InitializeComponent();
         }
 
-        private void textBoxQ_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
@@ -30,13 +30,14 @@ namespace OverleyEnhanced
 
         override protected void buttonRun_Click(object sender, EventArgs e)
         {
-            ((ScretchImageBox)m_source).Q = Convert.ToDouble(textBoxQ.Text);
+            ((TeleImageBox)m_source).Qt = Convert.ToDouble(textBoxQt.Text);
+            ((TeleImageBox)m_source).Qomega = Convert.ToDouble(textBoxQomega.Text);
             base.buttonRun_Click(sender, e);
         }
 
-        override protected void UpdateImageList() 
+        override protected void UpdateImageList()
         {
-            for (int i = 1; i < Buffer.imageList.Count; i++)
+            for (int i = 2; i < Buffer.imageList.Count; i++)
             {
                 ((EnhancedImageBox)Buffer.imageList[i]).UpdateFlag = true;
             }
@@ -45,7 +46,10 @@ namespace OverleyEnhanced
         override protected void Form_Load(object sender, System.EventArgs e)
         {
             base.Form_Load(sender, e);
-            if (this.Site == null || !this.Site.DesignMode) textBoxQ.Text = Convert.ToString(((ScretchImageBox)m_source).Q);
+            if (this.Site == null || !this.Site.DesignMode) {
+                textBoxQomega.Text = Convert.ToString(((TeleImageBox)m_source).Qomega);
+                textBoxQt.Text = Convert.ToString(((TeleImageBox)m_source).Qt);
+            } 
         }
     }
 }

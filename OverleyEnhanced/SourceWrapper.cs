@@ -12,41 +12,41 @@ namespace OverleyEnhanced
     {
         double m_avg; //средняя яркость
         double m_dev; //среднеквадратичное отклонение
-        public SourceWrapper(in Bitmap src, in PerceptionCoffs coffs) 
+        public SourceWrapper(Bitmap src, PerceptionCoffs coffs) 
         {
             Update(src, coffs);
         }
-        public void Update(in Bitmap src, in PerceptionCoffs coffs)
+        public void Update(Bitmap src, PerceptionCoffs coffs)
         {
-            this.coffs = coffs;
-            bit = src;
+            this.m_coffs = coffs;
+            m_bit = src;
             Update();
         }
         override public void Update()
         {
             base.Update();
             //читаем битмап
-            BitmapData databit = bit.LockBits(new Rectangle(0, 0, bit.Width, bit.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            BitmapData databit = m_bit.LockBits(new Rectangle(0, 0, m_bit.Width, m_bit.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
             IntPtr pointer = databit.Scan0;
-            Marshal.Copy(pointer, bytes, 0, bytes.Length);
-            bit.UnlockBits(databit);
+            Marshal.Copy(pointer, m_bytes, 0, m_bytes.Length);
+            m_bit.UnlockBits(databit);
             //устанавливаем шкалу яркости
-            for (int i = 0; i < y.Length; ++i)
+            for (int i = 0; i < m_bytes.Length; i += 3)
             {
-                y[i] = Convert.ToByte(Math.Round(coffs.k1 * bytes[i] + coffs.k2 * bytes[i + 1] + coffs.k3 * bytes[i + 2]));
+                m_y[i/3] = Convert.ToByte(Math.Round(m_coffs.k1 * m_bytes[i] + m_coffs.k2 * m_bytes[i + 1] + m_coffs.k3 * m_bytes[i + 2]));
             }
             SetFrequencys();
             //находим среднюю яркость
             m_avg = 0;
             for (int i = 0; i < 256; i++)
             {
-                m_avg += i * frequencyList[i];
+                m_avg += i * m_frequencyList[i];
             }
             //находим среднеквадратичное отклонение
             m_dev = 0;
             for (int i = 0; i < 256; i++)
             {
-                m_dev += Math.Pow(i - m_avg, 2) * frequencyList[i];
+                m_dev += Math.Pow(i - m_avg, 2) * m_frequencyList[i];
             }
             m_dev = Math.Sqrt(m_dev);
         }
