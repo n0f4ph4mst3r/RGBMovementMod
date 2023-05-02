@@ -11,13 +11,13 @@ namespace OverleyEnhanced
 {
     public partial class SettingsForm : Form
     {
-        protected EnhancedImageBox m_source;
+        protected EnhancedImagePair m_source;
         public SettingsForm()
         {
             InitializeComponent();
         }
 
-        public SettingsForm(EnhancedImageBox source)
+        public SettingsForm(EnhancedImagePair source)
         {
             InitializeComponent();
             m_source = source;

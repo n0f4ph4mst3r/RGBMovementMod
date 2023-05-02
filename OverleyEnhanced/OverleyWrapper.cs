@@ -12,7 +12,7 @@ namespace OverleyEnhanced
 
         double m_k = 1;
 
-        public OverleyWrapper(SourceWrapper src, ScretchWrapper scretch, TeleWrapper tele) : base (src)
+        public OverleyWrapper(SourceWrapper src, ScretchWrapper scretch, TeleWrapper tele, MovementType movementType = MovementType.DEFAULT) : base(src, movementType)
         {
             m_scretch = scretch;
             m_tele = tele;

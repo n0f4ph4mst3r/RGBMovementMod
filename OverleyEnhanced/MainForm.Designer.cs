@@ -35,8 +35,14 @@ namespace OverleyEnhanced
             this.окнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.srcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scretchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dScretchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eScretchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dTeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eTeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overleyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dOverleyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eOverleyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +69,7 @@ namespace OverleyEnhanced
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
@@ -87,31 +93,82 @@ namespace OverleyEnhanced
             this.srcToolStripMenuItem.Name = "srcToolStripMenuItem";
             this.srcToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.srcToolStripMenuItem.Text = "Исходное изображение";
-            this.srcToolStripMenuItem.Click += new System.EventHandler(this.исходноеИзображениеToolStripMenuItem_Click);
+            this.srcToolStripMenuItem.Click += new System.EventHandler(this.SourceToolStripMenuItem_Click);
             // 
             // scretchToolStripMenuItem
             // 
-            this.scretchToolStripMenuItem.CheckOnClick = true;
+            this.scretchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dScretchToolStripMenuItem,
+            this.eScretchToolStripMenuItem});
             this.scretchToolStripMenuItem.Name = "scretchToolStripMenuItem";
             this.scretchToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.scretchToolStripMenuItem.Text = "Растяжение";
-            this.scretchToolStripMenuItem.Click += new System.EventHandler(this.растяжениеToolStripMenuItem_Click);
+            // 
+            // dScretchToolStripMenuItem
+            // 
+            this.dScretchToolStripMenuItem.CheckOnClick = true;
+            this.dScretchToolStripMenuItem.Name = "dScretchToolStripMenuItem";
+            this.dScretchToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.dScretchToolStripMenuItem.Text = "Стандартный алгоритм";
+            this.dScretchToolStripMenuItem.Click += new System.EventHandler(this.dScretchToolStripMenuItem_Click);
+            // 
+            // eScretchToolStripMenuItem
+            // 
+            this.eScretchToolStripMenuItem.CheckOnClick = true;
+            this.eScretchToolStripMenuItem.Name = "eScretchToolStripMenuItem";
+            this.eScretchToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.eScretchToolStripMenuItem.Text = "Изменённый алгоритм";
+            this.eScretchToolStripMenuItem.Click += new System.EventHandler(this.eScretchToolStripMenuItem_Click);
             // 
             // teleToolStripMenuItem
             // 
-            this.teleToolStripMenuItem.CheckOnClick = true;
+            this.teleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dTeleToolStripMenuItem,
+            this.eTeleToolStripMenuItem});
             this.teleToolStripMenuItem.Name = "teleToolStripMenuItem";
             this.teleToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.teleToolStripMenuItem.Text = "Телевизионный алгоритм";
-            this.teleToolStripMenuItem.Click += new System.EventHandler(this.teleToolStripMenuItem_Click);
+            // 
+            // dTeleToolStripMenuItem
+            // 
+            this.dTeleToolStripMenuItem.CheckOnClick = true;
+            this.dTeleToolStripMenuItem.Name = "dTeleToolStripMenuItem";
+            this.dTeleToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.dTeleToolStripMenuItem.Text = "Стандартный алгоритм";
+            this.dTeleToolStripMenuItem.Click += new System.EventHandler(this.dTeleToolStripMenuItem_Click);
+            // 
+            // eTeleToolStripMenuItem
+            // 
+            this.eTeleToolStripMenuItem.CheckOnClick = true;
+            this.eTeleToolStripMenuItem.Name = "eTeleToolStripMenuItem";
+            this.eTeleToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.eTeleToolStripMenuItem.Text = "Изменённый алгоритм";
+            this.eTeleToolStripMenuItem.Click += new System.EventHandler(this.eTeleToolStripMenuItem_Click);
             // 
             // overleyToolStripMenuItem
             // 
-            this.overleyToolStripMenuItem.CheckOnClick = true;
+            this.overleyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dOverleyToolStripMenuItem,
+            this.eOverleyToolStripMenuItem});
             this.overleyToolStripMenuItem.Name = "overleyToolStripMenuItem";
             this.overleyToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.overleyToolStripMenuItem.Text = "Наложение";
-            this.overleyToolStripMenuItem.Click += new System.EventHandler(this.overleyToolStripMenuItem_Click);
+            // 
+            // dOverleyToolStripMenuItem
+            // 
+            this.dOverleyToolStripMenuItem.CheckOnClick = true;
+            this.dOverleyToolStripMenuItem.Name = "dOverleyToolStripMenuItem";
+            this.dOverleyToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.dOverleyToolStripMenuItem.Text = "Стандартный алгоритм";
+            this.dOverleyToolStripMenuItem.Click += new System.EventHandler(this.dOverleyToolStripMenuItem_Click);
+            // 
+            // eOverleyToolStripMenuItem
+            // 
+            this.eOverleyToolStripMenuItem.CheckOnClick = true;
+            this.eOverleyToolStripMenuItem.Name = "eOverleyToolStripMenuItem";
+            this.eOverleyToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.eOverleyToolStripMenuItem.Text = "Изменённый алгоритм";
+            this.eOverleyToolStripMenuItem.Click += new System.EventHandler(this.eOverleyToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
@@ -147,5 +204,11 @@ namespace OverleyEnhanced
         private System.Windows.Forms.ToolStripMenuItem scretchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem teleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overleyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dScretchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eScretchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dTeleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eTeleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dOverleyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eOverleyToolStripMenuItem;
     }
 }

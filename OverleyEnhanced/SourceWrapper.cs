@@ -18,7 +18,7 @@ namespace OverleyEnhanced
         }
         public void Update(Bitmap src, PerceptionCoffs coffs)
         {
-            this.m_coffs = coffs;
+            m_coffs = coffs;
             m_bit = src;
             Update();
         }
@@ -31,9 +31,9 @@ namespace OverleyEnhanced
             Marshal.Copy(pointer, m_bytes, 0, m_bytes.Length);
             m_bit.UnlockBits(databit);
             //устанавливаем шкалу яркости
-            for (int i = 0; i < m_bytes.Length; i += 3)
+            for (int i = 0, j = 0; i < m_bytes.Length; i += 3, j++)
             {
-                m_y[i/3] = Convert.ToByte(Math.Round(m_coffs.k1 * m_bytes[i] + m_coffs.k2 * m_bytes[i + 1] + m_coffs.k3 * m_bytes[i + 2]));
+                m_y[j] = Convert.ToByte(Math.Round(m_coffs.k1 * m_bytes[i] + m_coffs.k2 * m_bytes[i + 1] + m_coffs.k3 * m_bytes[i + 2]));
             }
             SetFrequencys();
             //находим среднюю яркость

@@ -12,7 +12,8 @@ namespace OverleyEnhanced
         byte[] m_z; //промежуточная шкала яркости
         double m_avg; //средняя яркость
         double m_dev; //среднеквадратичное отклонение
-        public ScretchWrapper(SourceWrapper src) : base(src) {
+        public ScretchWrapper(SourceWrapper src, MovementType movementType = MovementType.DEFAULT) : base(src, movementType)
+        {
             Update();
         }
         override public void Update()
@@ -36,11 +37,7 @@ namespace OverleyEnhanced
             }
             base.Update();
             //находим среднюю яркость
-            m_avg = 0;
-            for (int i = 0; i < 256; i++)
-            {
-                m_avg += i * m_frequencyList[i];
-            }
+            m_avg = m_frequencyList.Average();
             //находим среднеквадратичное отклонение
             m_dev = 0;
             for (int i = 0; i < 256; i++)

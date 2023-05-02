@@ -17,7 +17,7 @@ namespace OverleyEnhanced
 
         override protected void UpdateImage(object sender, EventArgs e)
         {
-            if (((OverleyImageBox)m_source).UpdateFlag) ((OverleyImageBox)m_source).Update();
+            if (((OverleyImagePair)m_source).UpdateFlag) ((OverleyImagePair)m_source).Update();
             UpdateImage();
         }
 
@@ -36,13 +36,8 @@ namespace OverleyEnhanced
 
         override protected void buttonRun_Click(object sender, EventArgs e)
         {
-             ((OverleyImageBox)m_source).K = Convert.ToDouble(textBoxK.Text);
+             ((OverleyImagePair)m_source).K = Convert.ToDouble(textBoxK.Text);
              base.buttonRun_Click(sender, e);
-        }
-
-        override protected void UpdateImageList()
-        {
-            ((EnhancedImageBox)Buffer.imageList[3]).UpdateFlag = true;
         }
 
         override protected void Form_Load(object sender, System.EventArgs e)
@@ -50,7 +45,7 @@ namespace OverleyEnhanced
             base.Form_Load(sender, e);
             if (this.Site == null || !this.Site.DesignMode)
             {
-                textBoxK.Text = Convert.ToString(((OverleyImageBox)m_source).K);
+                textBoxK.Text = Convert.ToString(((OverleyImagePair)m_source).K);
             }
         }
     }

@@ -10,7 +10,7 @@ namespace OverleyEnhanced
         ScretchWrapper m_scretch;
         double m_qt = 1, m_qomega = 1; //задаваемые характеристики
         byte[] m_t; //промежуточная шкала
-        public TeleWrapper(SourceWrapper src, ScretchWrapper scretch) : base(src) 
+        public TeleWrapper(SourceWrapper src, ScretchWrapper scretch, MovementType movementType = MovementType.DEFAULT) : base(src, movementType) 
         {
             m_scretch = scretch;
             Update();
