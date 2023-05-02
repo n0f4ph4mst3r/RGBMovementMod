@@ -9,17 +9,18 @@ namespace OverleyEnhanced
 {
     public static class Buffer
     {
-        public static Bitmap source;
-        public static List<ImageBox> imageList;
+        public static ImagePair source;
+        public static List<ImagePair> imageList;
+        public static List<ImagePair> imageList2;
     }
 
-    public class ImageBox
+    public class ImagePair
     {
         protected ImageWrapper m_imageJPEG;
         protected ImageWrapper m_imageSRGB;
         protected bool m_bflag = true;
 
-        public ImageBox (ImageWrapper imageJPEG, ImageWrapper imageSRGB)
+        public ImagePair (ImageWrapper imageJPEG, ImageWrapper imageSRGB)
         {
             m_imageJPEG = imageJPEG;
             m_imageSRGB = imageSRGB;
@@ -34,28 +35,43 @@ namespace OverleyEnhanced
             }
         }
 
+        public bool UpdateFlag
+        {
+            set
+            {
+                m_imageJPEG.UpdateFlag = m_imageSRGB.UpdateFlag = value;
+            }
+            get
+            {
+                return Img.UpdateFlag;
+            }
+        }
+
         public void SwitchImage()
         {
             if (m_bflag) m_bflag = false;
             else m_bflag = true;
+            Update();
         }
-    }
-
-    public abstract class EnhancedImageBox : ImageBox
-    {
-        public EnhancedImageBox(EnhancedImage imageJPEG, EnhancedImage imageSRGB) : base(imageJPEG, imageSRGB) {}
-
-        protected double m_saturation = 0.5;
-        protected byte m_criterion = 0;
-        protected bool m_bupdateflag = false;
-        protected bool m_parametersFlag = false;
 
         public void Update()
         {
-            m_imageJPEG.Update();
-            m_imageSRGB.Update();
-            m_bupdateflag = false;
+            if (Img.UpdateFlag)
+            {
+                Img.Update();
+                Img.UpdateFlag = false;
+            }
         }
+    }
+
+    public abstract class EnhancedImagePair : ImagePair
+    {
+        public EnhancedImagePair(EnhancedImage imageJPEG, EnhancedImage imageSRGB) : base(imageJPEG, imageSRGB) {}
+
+        protected double m_saturation = 0.5;
+        protected byte m_criterion = 0;
+        protected bool m_parametersFlag = false;
+
         public double Saturation
         {
             get
@@ -64,7 +80,7 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
+                UpdateFlag = true;
 
                 if (value > 1) m_saturation = 1;
                 else if (value < 0) m_saturation = 0;
@@ -81,8 +97,7 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
-
+                UpdateFlag = true;
                 m_criterion = value;
                 ((EnhancedImage)m_imageJPEG).Criterion = ((EnhancedImage)m_imageSRGB).Criterion = m_criterion;
             }
@@ -99,22 +114,11 @@ namespace OverleyEnhanced
                 return m_parametersFlag;
             }
         }
-        public bool UpdateFlag
-        {
-            set
-            {
-                m_bupdateflag = value;
-            }
-            get
-            {
-                return m_bupdateflag;
-            }
-        }
     }
 
-    public class ScretchImageBox : EnhancedImageBox
+    public class ScretchImagePair : EnhancedImagePair
     {
-        public ScretchImageBox(ScretchWrapper imageJPEG, ScretchWrapper imageSRGB) : base(imageJPEG, imageSRGB) {}
+        public ScretchImagePair(ScretchWrapper imageJPEG, ScretchWrapper imageSRGB) : base(imageJPEG, imageSRGB) {}
 
         protected double m_q = 0;
 
@@ -126,16 +130,16 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
+                UpdateFlag = true;
                 m_q = value;
                 ((ScretchWrapper)m_imageJPEG).Q = ((ScretchWrapper)m_imageSRGB).Q = m_q;
             }
         }
     }
 
-    public class TeleImageBox : EnhancedImageBox
+    public class TeleImagePair : EnhancedImagePair
     {
-        public TeleImageBox(TeleWrapper imageJPEG, TeleWrapper imageSRGB) : base(imageJPEG, imageSRGB) { }
+        public TeleImagePair(TeleWrapper imageJPEG, TeleWrapper imageSRGB) : base(imageJPEG, imageSRGB) { }
 
         double m_qt = 1, m_qomega = 1;
 
@@ -147,7 +151,7 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
+                UpdateFlag = true;
                 m_qt = value;
                 ((TeleWrapper)m_imageJPEG).Qt = ((TeleWrapper)m_imageSRGB).Qt = m_qt;
             }
@@ -160,16 +164,16 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
+                UpdateFlag = true;
                 m_qomega = value;
                 ((TeleWrapper)m_imageJPEG).Qomega = ((TeleWrapper)m_imageSRGB).Qomega = m_qomega;
             }
         }
     }
 
-    public class OverleyImageBox : EnhancedImageBox
+    public class OverleyImagePair : EnhancedImagePair
     {
-        public OverleyImageBox(OverleyWrapper imageJPEG, OverleyWrapper imageSRGB) : base(imageJPEG, imageSRGB) { }
+        public OverleyImagePair(OverleyWrapper imageJPEG, OverleyWrapper imageSRGB) : base(imageJPEG, imageSRGB) { }
 
         double m_k = 1;
 
@@ -181,7 +185,7 @@ namespace OverleyEnhanced
             }
             set
             {
-                m_bupdateflag = true;
+                UpdateFlag = true;
 
                 if (value > 1) m_k = 1;
                 else if (value < 0) m_k = 0;

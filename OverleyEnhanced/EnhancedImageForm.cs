@@ -19,29 +19,31 @@ namespace OverleyEnhanced
 
         override protected void UpdateImage(object sender, EventArgs e)
         {
-            if (((EnhancedImageBox)m_source).UpdateFlag)
+            if (((EnhancedImagePair)m_source).UpdateFlag)
             {
-                UpdateImageList();
-                ((EnhancedImageBox)m_source).Update();
+                ((EnhancedImagePair)m_source).Update();
+                UpdateImage();
             }
-            UpdateImage();
         }
 
-        virtual protected void UpdateImageList()
+        protected void UpdateImageList()
         {
-            UpdateImage();
+            for (int i = 0; m_dependencies != null && i < m_dependencies.Length; i++)
+            {
+                ((EnhancedImagePair)m_dependencies[i]).UpdateFlag = true;
+            }     
         }
 
         virtual protected void buttonRun_Click(object sender, EventArgs e)
         {
-            UpdateImageList();
-            ((EnhancedImageBox)m_source).Update();
+            ((EnhancedImagePair)m_source).Update();
             UpdateImage();
+            UpdateImageList();
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            SettingsForm form = new SettingsForm(m_source as EnhancedImageBox);
+            SettingsForm form = new SettingsForm(m_source as EnhancedImagePair);
             form.ShowDialog(this);
         }
     }

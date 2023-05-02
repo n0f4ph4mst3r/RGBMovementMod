@@ -10,7 +10,7 @@ namespace OverleyEnhanced
 {
     public partial class TeleForm : OverleyEnhanced.EnhancedImageForm
     {
-        public TeleForm()
+        public TeleForm() 
         {
             InitializeComponent();
         }
@@ -30,25 +30,17 @@ namespace OverleyEnhanced
 
         override protected void buttonRun_Click(object sender, EventArgs e)
         {
-            ((TeleImageBox)m_source).Qt = Convert.ToDouble(textBoxQt.Text);
-            ((TeleImageBox)m_source).Qomega = Convert.ToDouble(textBoxQomega.Text);
+            ((TeleImagePair)m_source).Qt = Convert.ToDouble(textBoxQt.Text);
+            ((TeleImagePair)m_source).Qomega = Convert.ToDouble(textBoxQomega.Text);
             base.buttonRun_Click(sender, e);
-        }
-
-        override protected void UpdateImageList()
-        {
-            for (int i = 2; i < Buffer.imageList.Count; i++)
-            {
-                ((EnhancedImageBox)Buffer.imageList[i]).UpdateFlag = true;
-            }
         }
 
         override protected void Form_Load(object sender, System.EventArgs e)
         {
             base.Form_Load(sender, e);
             if (this.Site == null || !this.Site.DesignMode) {
-                textBoxQomega.Text = Convert.ToString(((TeleImageBox)m_source).Qomega);
-                textBoxQt.Text = Convert.ToString(((TeleImageBox)m_source).Qt);
+                textBoxQomega.Text = Convert.ToString(((TeleImagePair)m_source).Qomega);
+                textBoxQt.Text = Convert.ToString(((TeleImagePair)m_source).Qt);
             } 
         }
     }

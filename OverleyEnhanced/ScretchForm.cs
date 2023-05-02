@@ -10,7 +10,7 @@ namespace OverleyEnhanced
 {
     public partial class ScretchForm : OverleyEnhanced.EnhancedImageForm
     {
-        public ScretchForm()
+        public ScretchForm() 
         {
             InitializeComponent();
         }
@@ -30,22 +30,14 @@ namespace OverleyEnhanced
 
         override protected void buttonRun_Click(object sender, EventArgs e)
         {
-            ((ScretchImageBox)m_source).Q = Convert.ToDouble(textBoxQ.Text);
+            ((ScretchImagePair)m_source).Q = Convert.ToDouble(textBoxQ.Text);
             base.buttonRun_Click(sender, e);
-        }
-
-        override protected void UpdateImageList() 
-        {
-            for (int i = 1; i < Buffer.imageList.Count; i++)
-            {
-                ((EnhancedImageBox)Buffer.imageList[i]).UpdateFlag = true;
-            }
         }
 
         override protected void Form_Load(object sender, System.EventArgs e)
         {
             base.Form_Load(sender, e);
-            if (this.Site == null || !this.Site.DesignMode) textBoxQ.Text = Convert.ToString(((ScretchImageBox)m_source).Q);
+            if (this.Site == null || !this.Site.DesignMode) textBoxQ.Text = Convert.ToString(((ScretchImagePair)m_source).Q);
         }
     }
 }

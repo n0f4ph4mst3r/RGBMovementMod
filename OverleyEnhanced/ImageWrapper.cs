@@ -15,7 +15,8 @@ namespace OverleyEnhanced
         protected int m_n; //общее число пикселей
         protected byte[] m_y; //шкала яркости
         protected byte[] m_bytes; //значения пикселей
-        protected List<double> m_frequencyList; //шкала частот
+        protected List<double> m_frequencyList = new List<double>(256); //шкала частот
+        protected bool m_updateFlag = false;
         public virtual void Update()
         {
             m_n = m_bit.Width * m_bit.Height;
@@ -24,7 +25,7 @@ namespace OverleyEnhanced
         }
         protected void SetFrequencys()
         {
-            m_frequencyList = new List<double>(256);
+            m_frequencyList.Clear();
             for (int i = 0; i < m_frequencyList.Capacity; ++i)
             {
                 m_frequencyList.Add(0);
@@ -79,6 +80,17 @@ namespace OverleyEnhanced
             get
             {
                 return m_coffs;
+            }
+        }
+        public bool UpdateFlag
+        {
+            set
+            {
+                m_updateFlag = value;
+            }
+            get
+            {
+                return m_updateFlag;
             }
         }
     }
